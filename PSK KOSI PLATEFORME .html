@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Petit Séminaire de Kinzambi - Plateforme Scolaire</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #0066cc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: white;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    h2 {
+      color: #004080;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    iframe, audio, video {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 700px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Petit Séminaire de Kinzambi</h1>
+  <p>Plateforme éducative intégrée</p>
+</header>
+
+<nav>
+  <a href="#inscription">Inscription</a>
+  <a href="#elearning">E-learning</a>
+  <a href="#quiz">Épreuves</a>
+  <a href="#resultats">Résultats</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section>
+  <h2>Présentation de l'école</h2>
+  <p><strong>Recteur :</strong> Abbé Arsène Busiete</p>
+  <p><strong>Directeur de l'internat :</strong> Abbé NE LUBA Grâce</p>
+  <p><strong>Secrétaire :</strong> KOSI MULUNGU Celestin</p>
+</section>
+
+<section id="inscription">
+  <h2>Inscription en ligne</h2>
+  <form action="inscription.php" method="post">
+    <label>Nom complet :</label>
+    <input type="text" name="nom" required>
+
+    <label>Date de naissance :</label>
+    <input type="date" name="dob" required>
+
+    <label>Classe demandée :</label>
+    <select name="classe" required>
+      <option>6e</option><option>5e</option><option>4e</option>
+      <option>3e</option><option>2e</option><option>1e</option>
+    </select>
+
+    <label>Email :</label>
+    <input type="email" name="email" required>
+
+    <label>Motivation :</label>
+    <textarea name="motivation" rows="4" required></textarea>
+
+    <button type="submit">Soumettre</button>
+  </form>
+</section>
+
+<section id="elearning">
+  <h2>Plateforme E-learning</h2>
+  <p><strong>Audio pédagogique :</strong></p>
+  <audio controls>
+    <source src="media/audio_cours.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l'audio.
+  </audio>
+
+  <p><strong>Vidéo de cours :</strong></p>
+  <video controls>
+    <source src="media/video_cours.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo.
+  </video>
+
+  <p><strong>Document texte :</strong></p>
+  <iframe src="media/texte_cours.pdf" height="500px"></iframe>
+</section>
+
+<section id="quiz">
+  <h2>Épreuve en ligne (Quiz rapide)</h2>
+  <form onsubmit="calculerScore(event)">
+    <label>1. Quel est le résultat de 5 × 6 ?</label>
+    <input type="number" id="q1" required>
+
+    <label>2. Quelle est la capitale de la RDC ?</label>
+    <input type="text" id="q2" required>
+
+    <button type="submit">Soumettre l'épreuve</button>
+  </form>
+  <div id="scoreResult" style="margin-top:15px; font-weight:bold;"></div>
+
+  <script>
+    function calculerScore(event) {
+      event.preventDefault();
+      let score = 0;
+      if (document.getElementById("q1").value == "30") score++;
+      if (document.getElementById("q2").value.trim().toLowerCase() === "kinshasa") score++;
+      document.getElementById("scoreResult").innerText = "Score : " + score + " / 2";
+    }
+  </script>
+</section>
+
+<section id="resultats">
+  <h2>Publication des résultats</h2>
+  <p>Les résultats des épreuves seront publiés ici.</p>
+  <ul>
+    <li><strong>Élève :</strong> Mbemba Joseph - <strong>Moyenne :</strong> 14,5/20 - <strong>Mention :</strong> Bien</li>
+    <li><strong>Élève :</strong> Kasa Vicky - <strong>Moyenne :</strong> 16,2/20 - <strong>Mention :</strong> Très bien</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email : <a href="mailto:clstndjouks@gmail.com">clstndjouks@gmail.com</a></p>
+  <p>Téléphone : +243 810 160 455</p>
+</section>
+
+<footer>
+  &copy; 2025 Petit Séminaire de Kinzambi. Tous droits réservés.
+</footer>
+
+</body>
+</html>
